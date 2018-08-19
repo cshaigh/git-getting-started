@@ -20,7 +20,8 @@ Remove-Item .\new_file_name.txt
 
 git status
 
-
-
 # Oops!  Time to do a hard reset...
 git reset --hard
+
+# All is now back to how it was...
+git status
