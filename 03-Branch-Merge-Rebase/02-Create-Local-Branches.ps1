@@ -1,8 +1,8 @@
 # create feature branch
-git branch feature1
+git branch "feature1"
 
 # switch to this feature branch
-git checkout feature1
+git checkout "feature1"
 
 git graphlog
 
