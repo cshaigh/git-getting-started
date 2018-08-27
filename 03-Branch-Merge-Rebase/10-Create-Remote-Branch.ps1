@@ -11,3 +11,11 @@ git push
 
 # origin/master remote has now been fast-forwarded to the same point as the current master
 git graphlog
+
+# expose v1.0_fixes branch
+git push "origin" "v1.0_fixes"
+
+# This can now be seen as a branch on the remote GitHub repository
+
+# list remote branches
+git branch --remotes
