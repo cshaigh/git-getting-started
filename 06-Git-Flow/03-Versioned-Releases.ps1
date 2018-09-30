@@ -10,9 +10,11 @@ git status
 
 #>
 
-git flow release start 0.1.0
+git flow release start 0.1.0 --showcommands
 <#
 
+    git config --local gitflow.branch.release/0.1.0.base develop
+    git checkout -b release/0.1.0 develop
     Switched to a new branch 'release/0.1.0'
 
     Summary of actions:
@@ -42,19 +44,26 @@ git branch
 
 # Then, finish the release:
 
-git flow release finish 0.1.0
+git flow release finish 0.1.0 --showcommands
 <#
 
+    git checkout master
     Switched to branch 'master'
+    git merge --no-ff release/0.1.0
     Merge made by the 'recursive' strategy.
     authentication.txt | 1 +
     1 file changed, 1 insertion(+)
     create mode 100644 authentication.txt
+    git checkout master
     Already on 'master'
+    git tag -a 0.1.0
+    git checkout develop
     Switched to branch 'develop'
+    git merge --no-ff 0.1.0
     Already up to date!
     Merge made by the 'recursive' strategy.
-    Deleted branch release/0.1.0 (was b685304).
+    git branch -d release/0.1.0
+    Deleted branch release/0.1.0 (was 0abd8a1).
 
     Summary of actions:
     - Release branch 'release/0.1.0' has been merged into 'master'
@@ -69,15 +78,15 @@ git flow release finish 0.1.0
 git log --decorate --graph --oneline
 <#
 
-    *   7369394 (HEAD -> develop) Merge tag '0.1.0' into develop
+    *   8797a05 (HEAD -> develop) Merge tag '0.1.0' into develop
     |\
-    | *   487090e (tag: 0.1.0, master) Merge branch 'release/0.1.0'
+    | *   7eb3fbc (tag: 0.1.0, master) Merge branch 'release/0.1.0'
     | |\
     | |/
     |/|
-    * | b685304 Add authentication.
+    * | 0abd8a1 Add authentication.
     |/
-    * b6aff2b Initial commit
+    * 662c0bd Initial commit
 
 #>
 

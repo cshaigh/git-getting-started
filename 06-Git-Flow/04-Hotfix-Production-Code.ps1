@@ -1,8 +1,10 @@
 # Because you keep your master branch always in sync with the code that's on production, you'll be able to quickly fix any issues on production.
 # For example, if your assets aren't loading on production, you'd roll back your deploy and start a hotfix branch
-git flow hotfix start assets
+git flow hotfix start assets --showcommands
 <#
 
+    git config --local gitflow.branch.hotfix/assets.base master
+    git checkout -b hotfix/assets master
     Switched to a new branch 'hotfix/assets'
 
     Summary of actions:
@@ -26,20 +28,26 @@ git add .\assets.txt
 git commit --message "Hotfix production error with assets"
 
 # When you're done, hotfix finish
-git flow hotfix finish assets
+git flow hotfix finish assets --showcommands
 <#
 
+    git checkout master
     Switched to branch 'master'
+    git merge --no-ff hotfix/assets
     Merge made by the 'recursive' strategy.
     assets.txt | 1 +
     1 file changed, 1 insertion(+)
     create mode 100644 assets.txt
+    git tag -a assets
+    git checkout develop
     Switched to branch 'develop'
+    git merge --no-ff assets
     Merge made by the 'recursive' strategy.
     assets.txt | 1 +
     1 file changed, 1 insertion(+)
     create mode 100644 assets.txt
-    Deleted branch hotfix/assets (was f477548).
+    git branch -d hotfix/assets
+    Deleted branch hotfix/assets (was 0de936a).
 
     Summary of actions:
     - Hotfix branch 'hotfix/assets' has been merged into 'master'

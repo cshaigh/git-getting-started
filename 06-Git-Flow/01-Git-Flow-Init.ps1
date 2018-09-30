@@ -1,20 +1,35 @@
 # Initialise a git flow repository
-git flow init
+git flow init --showcommands --defaults
 <#
 
-    Initialized empty Git repository in F:/dev/gitflowdemo/.git/
+    git init
+    Initialized empty Git repository in F:/dev/gitflow2/.git/
+    Using default branch names.
     No branches exist yet. Base branches must be created now.
     Branch name for production releases: [master]
+    git config gitflow.branch.master master
     Branch name for "next release" development: [develop]
+    git config gitflow.branch.develop develop
+    git symbolic-ref HEAD refs/heads/master
+    git commit --allow-empty --quiet -m Initial commit
+    git branch --no-track develop master
+    git checkout -q develop
 
     How to name your supporting branch prefixes?
     Feature branches? [feature/]
+    git config gitflow.prefix.feature feature/
     Bugfix branches? [bugfix/]
+    git config gitflow.prefix.bugfix bugfix/
     Release branches? [release/]
+    git config gitflow.prefix.release release/
     Hotfix branches? [hotfix/]
+    git config gitflow.prefix.hotfix hotfix/
     Support branches? [support/]
+    git config gitflow.prefix.support support/
     Version tag prefix? []
-    Hooks and filters directory? [F:/dev/gitflowdemo/.git/hooks]
+    git config gitflow.prefix.versiontag
+    Hooks and filters directory? [F:/dev/gitflow2/.git/hooks]
+    git config gitflow.path.hooks F:/dev/gitflow2/.git/hooks
 
 #>
 

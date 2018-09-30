@@ -1,9 +1,11 @@
 # git-flow makes it easy to work on multiple features at the same time by using feature branches.
 
 # Create a new git flow feature branch - 'authentication'
-git flow feature start authentication
+git flow feature start authentication --showcommands
 <#
 
+    git config --local gitflow.branch.feature/authentication.base develop
+    git checkout -b feature/authentication develop
     Switched to a new branch 'feature/authentication'
 
     Summary of actions:
@@ -34,7 +36,7 @@ git add .\authentication.txt
 git commit --message "Add authentication."
 <#
 
-    [feature/authentication b685304] Add authentication.
+    [feature/authentication 0abd8a1] Add authentication.
     1 file changed, 1 insertion(+)
     create mode 100644 authentication.txt
 
@@ -43,22 +45,25 @@ git commit --message "Add authentication."
 git log --decorate --graph --oneline
 <#
 
-    * b685304 (HEAD -> feature/authentication) Add authentication.
-    * b6aff2b (master, develop) Initial commit
+    * 0abd8a1 (HEAD -> feature/authentication) Add authentication.
+    * 662c0bd (master, develop) Initial commit
 
 #>
 
 # When you're finished, use feature finish
-git flow feature finish authentication
+git flow feature finish authentication --showcommands
 <#
 
+    git checkout develop
     Switched to branch 'develop'
-    Updating b6aff2b..b685304
+    git merge --ff feature/authentication
+    Updating 662c0bd..0abd8a1
     Fast-forward
     authentication.txt | 1 +
     1 file changed, 1 insertion(+)
     create mode 100644 authentication.txt
-    Deleted branch feature/authentication (was b685304).
+    git branch -d feature/authentication
+    Deleted branch feature/authentication (was 0abd8a1).
 
     Summary of actions:
     - The feature branch 'feature/authentication' was merged into 'develop'
@@ -74,7 +79,7 @@ git flow feature finish authentication
 git log --decorate --graph --oneline
 <#
 
-    * b685304 (HEAD -> develop) Add authentication.
-    * b6aff2b (master) Initial commit
+    * 0abd8a1 (HEAD -> develop) Add authentication.
+    * 662c0bd (master) Initial commit
 
 #>
